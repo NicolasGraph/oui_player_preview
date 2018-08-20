@@ -31,9 +31,9 @@
  * @package Oui\Player
  */
 
-namespace Oui;
+namespace Oui\Player;
 
-class PlayerPreview
+class Preview
 {
     /**
      * Preview related input name, id and pluggabke_ui() step.
@@ -123,7 +123,7 @@ class PlayerPreview
         $inputName = $this->getInput('name');
 
         if ($rs[$inputName]) { // Add the player preview.
-            $data .= \Txp::get('\Oui\Player')->renderPlayer(array(
+            $data .= \Txp::get('\Oui\Player\Player')->renderPlayer(array(
                     'play'       => $rs[$inputName],
                     'wraptag'    => 'div',
                     'class'      => $this->getClass(),
@@ -144,4 +144,6 @@ class PlayerPreview
     }
 }
 
-txpinterface === 'admin' ? new PlayerPreview : '';
+global $event;
+
+txpinterface === 'admin' && $event === 'article' ? new Preview : '';
