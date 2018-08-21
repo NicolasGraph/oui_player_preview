@@ -60,7 +60,6 @@ class Preview
         $this->setInput();
 
         register_callback(array($this, 'render'), 'article_ui', $this->getInput('step'));
-        register_callback(array($this, 'movePlayer'), 'article');
     }
 
     /**
@@ -129,18 +128,10 @@ class Preview
                     'class'      => $this->getClass(),
                     'responsive' => true,
                 ));
+            $data .= '<script>$(function() { $(".' . $this->getClass() . '").css("margin-top", "1em").insertAfter("#' . $this->getInput('id') . '"); });</script>';
         }
 
         return $data;
-    }
-
-    /**
-     * Move the player just under the right field.
-     */
-
-    public function movePlayer()
-    {
-        echo n . '<script>$(function() { $(".' . $this->getClass() . '").css("margin-top", "1em").insertAfter("#' . $this->getInput('id') . '"); });</script>';
     }
 }
 
