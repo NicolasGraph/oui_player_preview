@@ -24,7 +24,7 @@
  */
 
 /**
- * PalyerPreview
+ * Preview
  *
  * Manages admin side plugin features.
  *
